@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="  " xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation=" http://tymeleaf.org  ">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+<form method = "post" th:action="@{/customer/create}" th:object="${customerForm}">
+
+    <label for ="firstName"> Customer first name </label>
+    <input id="firstName" type="text" th:field="*{firstName}">
+
+    <label for ="lastName"> Customer last name </label>
+    <input id="lastName" type="text" th:field="*{lastName}">
+
+    <label for ="email"> Email   </label>
+    <input id="email" type="text" th:field="*{email}">
+
+    <label for ="address"> Customer's adress </label>
+    <input id="address" type="text" th:field="*{address}">
+</form>
+
+</body>
+</html>
