@@ -1,6 +1,7 @@
 package ro.sda.finalProject.carRental.entities;
 
 import lombok.Data;
+import ro.sda.finalProject.carRental.model.Position;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -17,6 +18,6 @@ public class Employee {
 
     private String firstName;
     private String lastName;
-    private String position;
+    private Position position;
 
 }
