@@ -21,5 +21,6 @@ public class Reservation {
     private LocalDate dateTo;
     private String department;
     private int amount;
+    //test
 
 }
