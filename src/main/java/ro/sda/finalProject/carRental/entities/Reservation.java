@@ -21,6 +21,6 @@ public class Reservation {
     private LocalDate dateTo;
     private String department;
     private int amount;
-    //test
+    //service // controller // html // legatura intre ele // tot ce tine de editarea car , actualizare, etc
 
 }
