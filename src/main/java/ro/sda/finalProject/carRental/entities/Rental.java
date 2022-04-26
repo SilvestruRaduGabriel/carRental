@@ -1,6 +1,5 @@
 package ro.sda.finalProject.carRental.entities;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,7 @@ import javax.persistence.*;
 public class Rental {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -29,5 +28,4 @@ public class Rental {
 
     @Lob
     private byte[] logoType;
-
 }
