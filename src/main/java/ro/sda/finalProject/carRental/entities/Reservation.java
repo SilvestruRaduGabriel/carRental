@@ -29,6 +29,6 @@ public class Reservation {
     private Branch loanBranch;
 
     private int amount;
-    //test
+    //service // controller // html // legatura intre ele // tot ce tine de editarea car , actualizare, etc
 
 }
