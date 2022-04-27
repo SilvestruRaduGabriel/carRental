@@ -27,5 +27,5 @@ public class Rental {
     private String owner;
 
     @Lob
-    private byte[] logoType;
+    private String logoType;
 }

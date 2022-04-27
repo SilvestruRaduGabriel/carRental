@@ -14,8 +14,8 @@
     <div class="row">
         <div>
             <a th:href="@{/rentals/create}" class="btn-btn-primary">Add new rental</a>
-            <a th:href="">Logout</a>
-            <a th:href="">Login</a>
+            <a th:href="@{/logout}">Logout</a>
+            <a th:href="@{/login}">Login</a>
         </div>
     </div>
     <div class="row">
@@ -37,10 +37,10 @@
                     <td th:text="${rental.domainInternet}"></td>
                     <td th:text="${rental.address}"></td>
                     <td th:text="${rental.owner}"></td>
-                    <td th:text="${rental.logoType}"></td>
+                    <td ><img th:src="*{'data:image/jpeg;base64, '+rental.logoType}" height="80"></td>
                     <td>
                         <a th:href="@{rentals/edit/{rentalId}(rentalId=${rental.id})}">Update</a>
-                        <a th:href="@{rentals/delete/{rentalId}(rentalId=${rental.id})}"></a>
+                        <a th:href="@{rentals/delete/{rentalId}(rentalId=${rental.id})}">Delete</a>
                     </td>
                 </tr>
                 </tbody>
