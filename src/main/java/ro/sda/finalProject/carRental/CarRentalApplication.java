@@ -11,4 +11,8 @@ public class CarRentalApplication {
 		SpringApplication.run(CarRentalApplication.class, args);
 	}
 
+	// Employee si Branch Legatura
+	// Html urile + Controller ( Toate operatiile crud definite)
+	// Dau commit fac pull request si il anunt pe Stefan
+
 }
