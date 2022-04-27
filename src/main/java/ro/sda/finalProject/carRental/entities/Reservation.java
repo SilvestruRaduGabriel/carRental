@@ -12,9 +12,11 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate dateOfBooking;
-    @OneToOne()
+
+    @ManyToOne
     private Customer client;
-    @OneToOne()
+
+    @ManyToOne
     private Car car;
     private LocalDate dateFrom;
     private LocalDate dateTo;
