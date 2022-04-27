@@ -27,7 +27,7 @@ public class BranchController {
         return "branchesList";
     }
 
-    @GetMapping("/branches")
+    @GetMapping("/branch")
     public String showForm(Model model) {
         model.addAttribute("branchForm", new BranchForm());
         return "branch_create";

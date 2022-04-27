@@ -30,7 +30,7 @@ public class EmployeeController {
         return "employeesList";
     }
 
-    @GetMapping("/employees")
+    @GetMapping("/employee")
     public String showForm(Model model) {
         model.addAttribute("employeeForm", new EmployeeForm());
         return "employee_create";

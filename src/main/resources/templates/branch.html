@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="  " xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation=" http://tymeleaf.org  ">
+<head>
+    <meta charset="UTF-8">
+    <title>Branch</title>
+</head>
+<body>
+<form method = "post" th:action="@{/branch/create}" th:object="${branchForm}">
+
+    <label for ="city"> Branch's city </label>
+    <input id="city" type="text" th:field="*{city}">
+
+    <label for ="address"> Branch's address </label>
+    <input id="address" type="text" th:field="*{address}">
+</form>
+
+</body>
+</html>
