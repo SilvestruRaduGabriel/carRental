@@ -1,30 +1,28 @@
 package ro.sda.finalProject.carRental.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
+
+
 @Slf4j
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class CustomerForm {
-    private Integer customerId;
+public class BranchForm {
+
     @NotNull
-    private String firstName;
+    private Integer id;
+
     @NotNull
-    private String lastName;
-    @Email
-    private String email;
+    private String city;
+
     @NotNull
-    @Max(100)
     private String address;
 }

@@ -3,10 +3,7 @@ package ro.sda.finalProject.carRental.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ro.sda.finalProject.carRental.entities.Customer;
 import ro.sda.finalProject.carRental.model.CustomerForm;
 import ro.sda.finalProject.carRental.service.CustomerService;
@@ -19,6 +16,7 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
+
     @GetMapping("/")
     public String showAllCustomers(Model model){
         List<Customer> customers = customerService.getAllCustomers();
@@ -32,10 +30,30 @@ public class CustomerController {
         return "customer";
     }
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public String createCustomer(@ModelAttribute("customerForm") @Valid CustomerForm customerForm, Model model) {
-        //TODO define method in service for creating a customer
+        customerService.createCustomer(customerForm);
         return "redirect:/customer/";
 
     }
+    @GetMapping("/edit/{CustomerId}")
+    public String showEditForm(@PathVariable("customerId") Integer id, Model model) {
+        CustomerForm customerForm = customerService.findById(id);
+        model.addAttribute("customerForm", customerForm);
+        return "customer_create";
+    }
+
+    @GetMapping("/delete/{customerId}")
+    public String deleteCustomer(@PathVariable("customerId") Integer id, Model model) {
+        customerService.deleteById(id);
+        return "redirect:/customer";
+    }
+
+
+//    @Autowired
+//    public void setCustomerService(CustomerService customerService) {
+//        this.customerService = customerService;
+//    }
 }
+
+
