@@ -10,6 +10,7 @@ import ro.sda.finalProject.carRental.entities.Employee;
 import ro.sda.finalProject.carRental.exceptions.EntityNotFoundException;
 import ro.sda.finalProject.carRental.model.BranchForm;
 import ro.sda.finalProject.carRental.model.EmployeeForm;
+import ro.sda.finalProject.carRental.model.Position;
 import ro.sda.finalProject.carRental.service.BranchService;
 import ro.sda.finalProject.carRental.service.EmployeeService;
 
@@ -23,36 +24,37 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/employees")
+    @GetMapping("/")
     public String showAllEmployees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
-        model.addAttribute("employeesList", employees);
-        return "employeesList";
+        model.addAttribute("employeeList", employees);
+        return "employeeList"; // numele html
     }
 
-    @GetMapping("/employee")
+    @GetMapping("/create")
     public String showForm(Model model) {
         model.addAttribute("employeeForm", new EmployeeForm());
+        model.addAttribute("positions", Position.values());
         return "employee_create";
     }
 
-    @PostMapping("/employee/create")
+    @PostMapping("/create")
     public String createEmployee(@ModelAttribute("employeeForm") @Valid EmployeeForm employeeForm, Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "employee_create";
         }
         employeeService.createEmployee(employeeForm);
-        return "redirect:/branch";
+        return "redirect:/employee/";
     }
 
-    @GetMapping("/employees/edit/{employeeId}")
+    @GetMapping("/edit/{employeeId}")
     public String showEditForm(@PathVariable("employeeId") int id, Model model) {
         EmployeeForm employeeForm = employeeService.findById(id);
         model.addAttribute("employeeForm", employeeForm);
-        return "branch_create";
+        return "employee_create";
     }
 
-    @GetMapping("/employees/delete/{employeeId}")
+    @GetMapping("/delete/{employeeId}")
     public String deleteEmployee(@PathVariable("employeeId") int id, Model model) {
         employeeService.deleteById(id);
         return "redirect:/employee";
