@@ -1,4 +1,4 @@
-package ro.sda.finalProject.carRental.logInAccounts;
+package ro.sda.finalProject.carRental.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -28,7 +28,7 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll().defaultSuccessUrl("/customer",true)
+                .formLogin().permitAll().defaultSuccessUrl("/customer")
                 .and()
                 .logout().permitAll().clearAuthentication(true)
         ;

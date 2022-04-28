@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class EmployeeForm {
 
-    @NotNull
     private Integer id;
 
     @NotNull
