@@ -23,20 +23,20 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/employees")
+    @GetMapping("/")
     public String showAllEmployees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employeesList", employees);
         return "employeesList";
     }
 
-    @GetMapping("/employee")
+    @GetMapping("/create")
     public String showForm(Model model) {
         model.addAttribute("employeeForm", new EmployeeForm());
         return "employee_create";
     }
 
-    @PostMapping("/employee/create")
+    @PostMapping("/create")
     public String createEmployee(@ModelAttribute("employeeForm") @Valid EmployeeForm employeeForm, Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "employee_create";
