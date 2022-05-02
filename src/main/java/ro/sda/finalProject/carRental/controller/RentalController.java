@@ -39,8 +39,7 @@ public class RentalController {
     }
 
     @PostMapping(value = "/create", consumes = {"multipart/form-data"})
-    public String createRental(@RequestParam("file") MultipartFile photo,@ModelAttribute("rentalForm") @Valid RentalForm form, Errors errors,
-                               Model model ) {
+    public String createRental(@RequestParam("file") MultipartFile photo, @ModelAttribute("rentalForm") @Valid RentalForm form, Errors errors) {
         if (errors.hasErrors()) {
             return "errorPage";
         } else {
@@ -68,9 +67,9 @@ public class RentalController {
     }
 
     @GetMapping("/delete/{rentalId}")
-    public String deleteRental(@PathVariable("rentalId") int id, Model model) {
+    public String deleteRental(@PathVariable("rentalId") int id) {
         rentalService.deleteById(id);
-        return "redirect:/rentalList";
+        return "redirect:/rentals/";
     }
 
 
