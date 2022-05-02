@@ -16,6 +16,9 @@ public class Branch {
     private String address;
 
     @OneToMany(mappedBy = "branch")
+    private List<Car> availableCars;
+
+    @OneToMany(mappedBy = "branch")
     private List<Employee> employees;
 
 
