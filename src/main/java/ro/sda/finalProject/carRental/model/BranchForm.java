@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class BranchForm {
 
-    @NotNull
+
     private Integer id;
 
     @NotNull

@@ -6,6 +6,7 @@ import ro.sda.finalProject.carRental.model.Status;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,7 +22,7 @@ public class Car {
 
     private String bodyType;
 
-    private LocalDate year;
+    private int year;
 
     private String colour;
 
@@ -30,4 +31,12 @@ public class Car {
     private Status status;
 
     private int amount;
+
+
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+
+    @OneToMany(mappedBy = "car")
+    private List<Reservation> reservations;
 }
