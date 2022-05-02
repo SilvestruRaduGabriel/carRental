@@ -22,22 +22,15 @@
                         <label for="address" class="col-form-label">Address:</label>
                         <input id="address" type="text" th:field="*{address}" class="form-control">
                     </div>
+                    <div th:if="*{id != null}">
+                        <select id="manager" class="form-select" th:field="*{managerId}">
+                            <option th:each="emp:${employeesList}" th:value="${emp.id}" th:text="${emp.getName()}"> </option>
+                        </select>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="d-flex justify-content-center mb-3">
                         <button type="submit" class="btn btn-primary btn-rounded w-100">Submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="container w-25">
-        <div class="my-5 mx-5">
-            <form method="get" th:action="@{/branch/edit/{branchId}">
-                <div class="mb-3">
-                    <div class="mb-3">
-                        <select th:id="id">
                     </div>
                 </div>
             </form>

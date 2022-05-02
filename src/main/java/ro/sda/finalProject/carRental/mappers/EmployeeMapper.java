@@ -2,8 +2,11 @@ package ro.sda.finalProject.carRental.mappers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ro.sda.finalProject.carRental.entities.Branch;
 import ro.sda.finalProject.carRental.entities.Employee;
+import ro.sda.finalProject.carRental.model.BranchForm;
 import ro.sda.finalProject.carRental.model.EmployeeForm;
+import ro.sda.finalProject.carRental.repository.BranchRepository;
 import ro.sda.finalProject.carRental.repository.EmployeeRepository;
 
 @Service
@@ -11,6 +14,10 @@ public class EmployeeMapper implements Mapper<Employee , EmployeeForm> {
 
     @Autowired
     private final EmployeeRepository employeeRepository;
+
+    @Autowired
+    private BranchRepository branchRepository;
+
 
     public EmployeeMapper(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
@@ -24,7 +31,9 @@ public class EmployeeMapper implements Mapper<Employee , EmployeeForm> {
         employeeForm.setFirstName(entity.getFirstName());
         employeeForm.setLastName(entity.getLastName());
         employeeForm.setPosition(entity.getPosition());
-
+        if(entity.getBranch() !=null){
+            employeeForm.setBranchId(entity.getBranch().getId());
+        }
         return employeeForm;
     }
 
@@ -41,6 +50,9 @@ public class EmployeeMapper implements Mapper<Employee , EmployeeForm> {
         employee.setFirstName(dto.getFirstName());
         employee.setLastName(dto.getLastName());
         employee.setPosition(dto.getPosition());
+        if (dto.getBranchId() !=null){
+            employee.setBranch(branchRepository.findById(dto.getBranchId()).orElse(new Branch()));
+        }
 
         return employee;
     }

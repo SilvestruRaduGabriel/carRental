@@ -24,6 +24,9 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private BranchService branchService;
+
     @GetMapping("/")
     public String showAllEmployees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
@@ -35,6 +38,7 @@ public class EmployeeController {
     public String showForm(Model model) {
         model.addAttribute("employeeForm", new EmployeeForm());
         model.addAttribute("positions", Position.values());
+        model.addAttribute("branchList",branchService.getAllBranches());
         return "employee_create";
     }
 
@@ -51,12 +55,14 @@ public class EmployeeController {
     public String showEditForm(@PathVariable("employeeId") int id, Model model) {
         EmployeeForm employeeForm = employeeService.findById(id);
         model.addAttribute("employeeForm", employeeForm);
+        model.addAttribute("positions", Position.values());
+        model.addAttribute("branchList",branchService.getAllBranches());
         return "employee_create";
     }
 
     @GetMapping("/delete/{employeeId}")
     public String deleteEmployee(@PathVariable("employeeId") int id, Model model) {
         employeeService.deleteById(id);
-        return "redirect:/employee";
+        return "redirect:/employee/";
     }
 }

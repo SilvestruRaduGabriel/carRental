@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import ro.sda.finalProject.carRental.entities.Branch;
 
 import javax.validation.constraints.NotNull;
 
@@ -25,4 +26,12 @@ public class EmployeeForm {
 
     @NotNull
     private Position position;
+
+    private Integer branchId;
+
+    private BranchForm branchForm;
+
+    public String getName(){
+        return firstName + " " + lastName;
+    }
 }
