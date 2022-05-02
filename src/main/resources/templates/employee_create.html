@@ -11,32 +11,40 @@
 <main>
     <div class="container w-25">
         <div class="my-5 mx-5">
-                <form method="post" th:action="@{/employee/create}" th:object="${employeeForm}">
+            <form method="post" th:action="@{/employee/create}" th:object="${employeeForm}">
+                <div class="mb-3">
                     <div class="mb-3">
-                        <div class="mb-3">
-                            <input id="id" type="number" hidden th:field="*{id}">
-                            <label for="firstName" class="col-form-label">First Name:</label>
-                            <input id="firstName" type="text" th:field="*{firstName}" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="lastName" class="col-form-label">Last name:</label>
-                            <input id="lastName" type="text" th:field="*{lastName}" class="form-control">
-                        </div>
+                        <input id="id" type="number" hidden th:field="*{id}">
+                        <label for="firstName" class="col-form-label">First Name:</label>
+                        <input id="firstName" type="text" th:field="*{firstName}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="col-form-label">Last name:</label>
+                        <input id="lastName" type="text" th:field="*{lastName}" class="form-control">
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="position" class="col-form-label"> Position:</label>
-<!--                            <input id="position" th:field="*{position}" class="form-control">-->
-                            <select id="position" class="form-select" th:field="*{position}">
-                                <option th:each="position:${T(ro.sda.finalProject.carRental.model.Position).values()}" th:value="${position}" th:text="${position}"> </option>
-                            </select>
-                        </div>
+                    <div class="mb-3">
+                        <label for="position" class="col-form-label"> Position:</label>
+                        <!--                            <input id="position" th:field="*{position}" class="form-control">-->
+                        <select id="position" class="form-select" th:field="*{position}">
+                            <option th:each="position:${T(ro.sda.finalProject.carRental.model.Position).values()}"
+                                    th:value="${position}" th:text="${position}"></option>
+                        </select>
                     </div>
-                    <div class="row">
-                        <div class="d-flex justify-content-center mb-3">
-                            <button type="submit" class="btn btn-primary btn-rounded w-100">Submit</button>
-                        </div>
+                    <div class="mb-3">
+                        <label for="branch" class="col-form-label"> Branch</label>
+                        <select id="branch" class="form-select" th:field="*{branchId}">
+                            <option th:each="branch:${branchList}" th:value="${branch.id}"
+                                    th:text="${branch.getName()}"></option>
+                        </select>
                     </div>
-                </form>
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-center mb-3">
+                        <button type="submit" class="btn btn-primary btn-rounded w-100">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
