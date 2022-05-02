@@ -20,36 +20,36 @@ public class BranchController {
     @Autowired
     private BranchService branchService;
 
-    @GetMapping("/branches")
+    @GetMapping("/")
     public String showAllBranches(Model model) {
         List<Branch> branches = branchService.getAllBranches();
-        model.addAttribute("branchesList", branches);
-        return "branchesList";
+        model.addAttribute("branchList", branches);
+        return "branchList";
     }
 
-    @GetMapping("/branch")
+    @GetMapping("/create")
     public String showForm(Model model) {
         model.addAttribute("branchForm", new BranchForm());
         return "branch_create";
     }
 
-    @PostMapping("/branch/create")
+    @PostMapping("/create")
     public String createBranch(@ModelAttribute("branchForm") @Valid BranchForm branchForm, Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "branch_create";
         }
         branchService.createBranch(branchForm);
-        return "redirect:/branch";
+        return "redirect:/branch/";
     }
 
-    @GetMapping("/branches/edit/{branchId}")
+    @GetMapping("/edit/{branchId}")
     public String showEditForm(@PathVariable("branchId") int id, Model model) throws EntityNotFoundException {
         BranchForm branchForm = branchService.findById(id);
         model.addAttribute("branchForm", branchForm);
         return "branch_create";
     }
 
-    @GetMapping("/branches/delete/{branchId}")
+    @GetMapping("/delete/{branchId}")
     public String deleteBranch(@PathVariable("branchId") int id, Model model) {
         branchService.deleteById(id);
         return "redirect:/branch";

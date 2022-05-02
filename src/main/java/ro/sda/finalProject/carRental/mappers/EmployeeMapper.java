@@ -1,4 +1,4 @@
-package ro.sda.finalProject.carRental.mapper;
+package ro.sda.finalProject.carRental.mappers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

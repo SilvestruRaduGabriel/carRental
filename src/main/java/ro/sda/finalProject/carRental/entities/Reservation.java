@@ -13,14 +13,21 @@ public class Reservation {
     private Long id;
     private LocalDate dateOfBooking;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Customer client;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Car car;
+
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    private String department;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Branch returnBranch;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Branch loanBranch;
+
     private int amount;
     //test
 

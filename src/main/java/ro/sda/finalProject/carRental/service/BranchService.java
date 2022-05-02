@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.sda.finalProject.carRental.entities.Branch;
 import ro.sda.finalProject.carRental.exceptions.EntityNotFoundException;
-import ro.sda.finalProject.carRental.mapper.BranchMapper;
+import ro.sda.finalProject.carRental.mappers.BranchMapper;
 import ro.sda.finalProject.carRental.model.BranchForm;
 import ro.sda.finalProject.carRental.repository.BranchRepository;
 

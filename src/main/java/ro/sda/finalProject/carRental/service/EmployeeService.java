@@ -4,7 +4,7 @@ package ro.sda.finalProject.carRental.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.sda.finalProject.carRental.entities.Employee;
-import ro.sda.finalProject.carRental.mapper.EmployeeMapper;
+import ro.sda.finalProject.carRental.mappers.EmployeeMapper;
 import ro.sda.finalProject.carRental.model.EmployeeForm;
 import ro.sda.finalProject.carRental.repository.EmployeeRepository;
 
