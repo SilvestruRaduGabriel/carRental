@@ -1,11 +1,15 @@
 package ro.sda.finalProject.carRental.entities;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Branch {
 
     @Id
@@ -14,6 +18,7 @@ public class Branch {
     private Integer id;
     private String city;
     private String address;
+    private String name;
 
     @OneToMany(mappedBy = "branch")
     private List<Car> availableCars;
@@ -21,6 +26,6 @@ public class Branch {
     @OneToMany(mappedBy = "branch")
     private List<Employee> employees;
 
-
-
+    @OneToOne
+    private Employee manager;
 }

@@ -35,9 +35,9 @@
                     <td th:text="${employee.position}"></td>
                     <td>
                         <a class="btn btn-btn-primary btn-rounded"
-                           th:href="@{employee/edit/{employeeId}(employeeId=${employee.id})}">Update</a>
+                           th:href="@{/employee/edit/{employeeId}(employeeId=${employee.id})}">Update</a>
                         <a class="btn btn-btn-primary btn-rounded"
-                           th:href="@{employee/delete/{employeeId}(employeeId=${employee.id})}">Delete</a>
+                           th:href="@{/employee/delete/{employeeId}(employeeId=${employee.id})}">Delete</a>
                     </td>
                 </tr>
                 </tbody>
