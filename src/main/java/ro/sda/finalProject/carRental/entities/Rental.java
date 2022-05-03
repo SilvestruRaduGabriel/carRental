@@ -28,4 +28,8 @@ public class Rental {
 
     @Lob
     private String logoType;
+
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
 }
