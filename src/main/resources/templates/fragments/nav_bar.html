@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Menu -->
+<div th:fragment="navbar">
+<nav id="menu">
+  <h2>Menu</h2>
+  <ul>
+    <li><a th:href="@{/}">Home</a></li>
+
+    <li><a th:href="@{/offers}">Offers</a></li>
+
+    <li><a th:href="@{/fleet}" class="active">Fleet</a></li>
+
+    <li>
+      <a href="#" class="dropdown-toggle">About</a>
+
+      <ul>
+        <li><a th:href="@{/about}">About Us</a></li>
+        <li><a th:href="@{/team}">Team</a></li>
+        <li><a th:href="@{/blog}">Blog</a></li>
+        <li><a th:href="@{/testimonials}">Testimonials</a></li>
+        <li><a th:href="@{/faq}">FAQ</a></li>
+        <li><a th:href="@{/terms}">Terms</a></li>
+      </ul>
+    </li>
+    <li><a th:href="@{/contact}">Contact Us</a></li>
+  </ul>
+</nav>
+</div>

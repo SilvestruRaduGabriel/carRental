@@ -10,28 +10,28 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConf extends WebSecurityConfigurerAdapter {
-   @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-       auth.inMemoryAuthentication()
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
                 .withUser("user").roles("USER").password("{noop}password")
                 .and()
                 .withUser("admin").roles("ADMIN").password("{noop}password");
-            }
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/customer").permitAll()
+                .antMatchers(HttpMethod.GET, "/customer").permitAll()
                 .antMatchers("/customer/delete/**").hasRole("ADMIN")
-                .antMatchers("/customer/create").hasAnyRole("USER","ADMIN")
+                .antMatchers("/customer/create").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/customer/edit/**").hasRole("ADMIN")
                 .antMatchers("/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll().defaultSuccessUrl("/customer")
+                .formLogin().permitAll().defaultSuccessUrl("/rentals/")
                 .and()
                 .logout().permitAll().clearAuthentication(true)
         ;
     }
-    }
+}
 

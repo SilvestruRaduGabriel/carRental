@@ -11,7 +11,7 @@
 <main>
     <div class="container w-25">
         <div class="my-5 mx-5">
-            <form method="post" th:action="@{/branch/create}" th:object="${branchForm}">
+            <form method="post" th:action="@{/customer/create}" th:object="${branchForm}">
                 <div class="mb-3">
                     <div class="mb-3">
                         <input id="id" type="number" hidden th:field="*{id}">
@@ -22,9 +22,14 @@
                         <label for="address" class="col-form-label">Address:</label>
                         <input id="address" type="text" th:field="*{address}" class="form-control">
                     </div>
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input id="name" type="text" th:field="*{name}" class="form-control">
+                    </div>
                     <div th:if="*{id != null}">
                         <select id="manager" class="form-select" th:field="*{managerId}">
-                            <option th:each="emp:${employeesList}" th:value="${emp.id}" th:text="${emp.getName()}"> </option>
+                            <option th:each="emp:${employeesList}" th:value="${emp.id}"
+                                    th:text="${emp.getName()}"></option>
                         </select>
                     </div>
                 </div>

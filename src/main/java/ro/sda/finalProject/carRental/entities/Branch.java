@@ -1,5 +1,7 @@
 package ro.sda.finalProject.carRental.entities;
 
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,4 +29,8 @@ public class Branch {
 
     @OneToOne
     private Employee manager;
+
+    @OneToMany(mappedBy = "branch")
+    private List<Rental> rentals;
+
 }
