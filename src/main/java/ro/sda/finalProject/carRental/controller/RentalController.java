@@ -15,6 +15,7 @@ import ro.sda.finalProject.carRental.service.RentalService;
 import javax.mail.Multipart;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -38,14 +39,13 @@ public class RentalController {
     }
 
     @PostMapping(value = "/create", consumes = {"multipart/form-data"})
-    public String createRental(@ModelAttribute("rentalForm") @Valid RentalForm form, Errors errors, Model model,
-                               BindingResult bindingResult, @RequestParam("photo") MultipartFile photo) {
-        if (bindingResult.hasErrors()) {
+    public String createRental(@RequestParam("file") MultipartFile photo, @ModelAttribute("rentalForm") @Valid RentalForm form, Errors errors) {
+        if (errors.hasErrors()) {
             return "errorPage";
         } else {
             if (!photo.isEmpty()) {
                 try {
-                    byte[] fileBytes = photo.getBytes();
+                    String fileBytes = Base64.getMimeEncoder().encodeToString(photo.getBytes());
                     form.setLogoType(fileBytes);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -56,7 +56,7 @@ public class RentalController {
             return "rental_create";
         }
         rentalService.createRental(form);
-        return "redirect:/rentalList";
+        return "redirect:/rentals/";
     }
 
     @GetMapping("/edit/{rentalId}")
@@ -67,9 +67,9 @@ public class RentalController {
     }
 
     @GetMapping("/delete/{rentalId}")
-    public String deleteRental(@PathVariable("rentalId") int id, Model model) {
+    public String deleteRental(@PathVariable("rentalId") int id) {
         rentalService.deleteById(id);
-        return "redirect:/rentalList";
+        return "redirect:/rentals/";
     }
 
 

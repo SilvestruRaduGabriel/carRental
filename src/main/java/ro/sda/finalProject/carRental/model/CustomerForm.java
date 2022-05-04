@@ -25,6 +25,5 @@ public class CustomerForm {
     @Email
     private String email;
     @NotNull
-    @Max(100)
     private String address;
 }
