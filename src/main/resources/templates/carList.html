@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+</head>
+<body>
+<div>
+    <h2>Cars</h2>
+    <div class="row">
+        <div>
+            <a th:href="@{/cars/create}" class="btn-btn-primary">Add new cars</a>
+            <a th:href="@{/logout}">Logout</a>
+            <a th:href="@{/login}">Login</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <table>
+                <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Body Type</th>
+                    <th>Year</th>
+                    <th>Colour</th>
+                    <th>Mileage</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="car : ${carList}">
+                    <td th:text="${car.Brand}"></td>
+                    <td th:text="${car.Model}"></td>
+                    <td th:text="${car.BodyType}"></td>
+                    <td th:text="${car.Year}"></td>
+                    <td th:text="${car.Colour}"></td>
+                    <td th:text="${car.Mileage}"></td>
+                    <td th:text="${car.Status}"></td>
+                    <td th:text="${car.Amount}"></td>
+
+                    <td>
+                        <a th:href="@{cars/edit/{carId}(carId=${car.id})}">Update</a>
+                        <a th:href="@{cars/delete/{carId}(carId=${car.id})}"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
