@@ -3,6 +3,8 @@ package ro.sda.finalProject.carRental.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.sda.finalProject.carRental.entities.Car;
+import ro.sda.finalProject.carRental.mappers.CarMapper;
+import ro.sda.finalProject.carRental.model.CarForm;
 import ro.sda.finalProject.carRental.repository.CarRepository;
 
 import javax.persistence.EntityNotFoundException;
@@ -14,8 +16,14 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
-    public Car save(Car car) {
-        return carRepository.save(car);
+    @Autowired
+    private CarMapper carMapper;
+
+
+    public void create(CarForm carForm) {
+        Car carForm1 = carMapper.convertToEntity(carForm);
+        carRepository.save(carForm1);
+
     }
 
     public Car findById(Long id) {
@@ -26,7 +34,7 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    void delete(Long id) {
+    public void delete(Long id) {
         carRepository.deleteById(id);
     }
 }
