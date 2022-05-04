@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+</head>
+<body>
+<form method = "post" th:action="@{/reservation/create}" th:object="${reservationForm}">
+
+    <label for ="dateOfBooking"> Date of booking  </label>
+    <input id="dateOfBooking" type="text" th:field="*{dateOfBooking}">
+
+    <label for ="client"> Client </label>
+    <input id="client" type="text" th:field="*{client}">
+
+    <label for ="car"> Car </label>
+    <input id="car" type="text" th:field="*{car}">
+
+    <label for ="dateFrom"> Date from </label>
+    <input id="dateFrom" type="text" th:field="*{dateFrom}">
+
+    <label for ="dateTo"> Date to </label>
+    <input id="dateTo" type="text" th:field="*{dateTo}">
+
+    <label for ="department"> Department </label>
+    <input id="department" type="text" th:field="*{department}">
+
+    <label for ="amount"> Amount </label>
+    <input id="amount" type="text" th:field="*{amount}">
+
+</form>
+</body>
+</html>

@@ -1,16 +1,13 @@
 package ro.sda.finalProject.carRental.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import ro.sda.finalProject.carRental.entities.Employee;
 
 import javax.validation.constraints.NotNull;
 
 
-
+//@Data
 @Slf4j
 @NoArgsConstructor
 @AllArgsConstructor
