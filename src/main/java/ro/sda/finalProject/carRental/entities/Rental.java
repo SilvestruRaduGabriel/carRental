@@ -27,5 +27,9 @@ public class Rental {
     private String owner;
 
     @Lob
-    private byte[] logoType;
+    private String logoType;
+
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
 }

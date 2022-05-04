@@ -20,6 +20,6 @@ public class RentalForm {
     private String address;
     private String owner;
 
-    private byte[] logoType;
+    private String logoType;
 
 }
