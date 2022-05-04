@@ -13,30 +13,30 @@
     <h2>Employees</h2>
     <div class="mb-3">
         <div class="mb-3">
-            <a th:href="@{/employee/create}" class="btn btn-btn-primary btn-rounded">Add new employee</a>
-            <a th:href="@{/logout}" class="btn btn-btn-primary btn-rounded">Logout</a>
-            <a th:href="@{/login}" class="btn btn-btn-primary btn-rounded">Login</a>
+            <a th:href="@{/employee/create}" class="btn btn-primary btn-rounded">Add new employee</a>
+            <a th:href="@{/logout}" class="btn btn-primary btn-rounded">Logout</a>
+            <a th:href="@{/login}" class="btn btn-primary btn-rounded">Login</a>
         </div>
     </div>
     <div class="mb-3">
         <div class="col-lg-6">
             <table>
                 <thead>
-                <tr>
+                <tr th:border="gray">
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Position</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employee : ${employeeList}">
+                <tr th:border="" th:each="employee : ${employeeList}">
                     <td th:text="${employee.firstName}"></td>
                     <td th:text="${employee.lastName}"></td>
                     <td th:text="${employee.position}"></td>
                     <td>
-                        <a class="btn btn-btn-primary btn-rounded"
+                        <a class="btn btn btn-primary btn-rounded"
                            th:href="@{/employee/edit/{employeeId}(employeeId=${employee.id})}">Update</a>
-                        <a class="btn btn-btn-primary btn-rounded"
+                        <a class="btn btn btn-primary btn-rounded"
                            th:href="@{/employee/delete/{employeeId}(employeeId=${employee.id})}">Delete</a>
                     </td>
                 </tr>
