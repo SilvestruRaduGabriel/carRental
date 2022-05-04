@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All customer</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+</head>
+<body class="bg-info">
+<div class="container-fluid bg-info ">
+    <div class="row">
+        <h3>All Customers List</h3>
+    </div>
+    <div class="row">
+        <div class="nav" >
+
+            <a th:href="@{/customer/create}" class="btn btn-primary">Add new customer </a>
+            <a th:href="@{/logout}" class="btn btn-primary">Logout </a>
+            <a th:href="@{/login}" class="btn btn-primary">Login </a>
+        </div>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="customer : ${customerList}">
+                        <td th:text="${customer.firstName}"></td>
+                        <td th:text="${customer.lastName}"></td>
+                        <td th:text="${customer.address}"></td>
+                        <td th:text="${customer.email}"></td>
+                        <td>
+                            <a class="btn btn-outline-success"
+                               th:href="@{/customer/edit/{customerId}(customerId=${customer.id})}">Update</a>
+                            <a class="btn btn-outline-danger"
+                               th:href="@{/customer/delete/{customerId}(customerId=${customer.id})}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
