@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import ro.sda.finalProject.carRental.entities.Car;
 import ro.sda.finalProject.carRental.service.CarService;
 
 import java.util.List;
+import ro.sda.finalProject.carRental.model.ContactForm;
+
 
 @Controller
 public class MainController {
@@ -31,7 +34,8 @@ public class MainController {
     }
 
     @GetMapping("/contact")
-    public String contactPage() {
+    public String contactPage(Model model) {
+        model.addAttribute("contactForm", new ContactForm());
         return "contact";
     }
 
