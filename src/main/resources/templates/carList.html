@@ -31,22 +31,27 @@
                     <th>Mileage</th>
                     <th>Status</th>
                     <th>Amount</th>
+                    <th>Image</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="car : ${carList}">
-                    <td th:text="${car.Brand}"></td>
-                    <td th:text="${car.Model}"></td>
-                    <td th:text="${car.BodyType}"></td>
-                    <td th:text="${car.Year}"></td>
-                    <td th:text="${car.Colour}"></td>
-                    <td th:text="${car.Mileage}"></td>
-                    <td th:text="${car.Status}"></td>
-                    <td th:text="${car.Amount}"></td>
+                    <td th:text="${car.brand}"></td>
+                    <td th:text="${car.model}"></td>
+                    <td th:text="${car.bodyType}"></td>
+                    <td th:text="${car.year}"></td>
+                    <td th:text="${car.colour}"></td>
+                    <td th:text="${car.mileage}"></td>
+                    <td th:text="${car.status}"></td>
+                    <td th:text="${car.amount}"></td>
+                    <td><img th:src="*{'data:image/jpeg;base64, '+car.image}" height="30" width="45"/></td>
 
                     <td>
-                        <a th:href="@{cars/edit/{carId}(carId=${car.id})}">Update</a>
-                        <a th:href="@{cars/delete/{carId}(carId=${car.id})}"></a>
+
+                        <a class="btn btn-outline-success"
+                           th:href="@{edit/{carId}(carId=${car.id})}">Update</a>
+                        <a class="btn btn-outline-danger"
+                           th:href="@{delete/{carId}(carId=${car.id})}">Delete</a>
                     </td>
                 </tr>
                 </tbody>

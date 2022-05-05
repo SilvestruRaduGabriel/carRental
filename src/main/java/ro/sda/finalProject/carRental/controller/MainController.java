@@ -1,10 +1,19 @@
 package ro.sda.finalProject.carRental.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import ro.sda.finalProject.carRental.entities.Car;
+import ro.sda.finalProject.carRental.service.CarService;
+
+import java.util.List;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    private CarService carService;
 
     @GetMapping("/about")
     public String aboutPage() {
@@ -32,7 +41,9 @@ public class MainController {
     }
 
     @GetMapping("/fleet")
-    public String fleetPage() {
+    public String fleetPage(Model model) {
+        List<Car> cars = carService.findAll();
+        model.addAttribute("carList", cars);
         return "fleet";
     }
 

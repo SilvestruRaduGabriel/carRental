@@ -32,6 +32,8 @@ public class Car {
 
     private int amount;
 
+    @Lob
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "branch_id")

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ro.sda.finalProject.carRental.entities.Car;
 import ro.sda.finalProject.carRental.mappers.CarMapper;
 import ro.sda.finalProject.carRental.model.CarForm;
+import ro.sda.finalProject.carRental.model.Status;
 import ro.sda.finalProject.carRental.repository.CarRepository;
 
 import javax.persistence.EntityNotFoundException;
@@ -23,7 +24,6 @@ public class CarService {
     public void create(CarForm carForm) {
         Car carForm1 = carMapper.convertToEntity(carForm);
         carRepository.save(carForm1);
-
     }
 
     public Car findById(Long id) {
@@ -32,6 +32,10 @@ public class CarService {
 
     public List<Car> findAll() {
         return carRepository.findAll();
+    }
+
+    public List<Car> findTop3(){
+        return carRepository.findFirst3ByStatus(Status.AVAILABLE);
     }
 
     public void delete(Long id) {

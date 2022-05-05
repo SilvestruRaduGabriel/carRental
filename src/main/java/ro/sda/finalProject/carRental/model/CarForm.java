@@ -3,6 +3,8 @@ package ro.sda.finalProject.carRental.model;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
+import javax.persistence.Lob;
+
 @Data
 public class CarForm {
 
@@ -23,5 +25,7 @@ public class CarForm {
     private Status status;
     @NotNull
     private int amount;
+
+    private String image;
 
 }

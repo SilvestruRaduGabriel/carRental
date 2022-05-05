@@ -11,7 +11,7 @@
 <main>
     <div class="container w-25">
         <div class="my-5 mx-5">
-            <form method="post" th:action="@{/cars/create}" th:object="${carForm}">
+            <form method="post" enctype="multipart/form-data" th:action="@{/cars/create}" th:object="${carForm}">
                 <div class="mb-3">
                     <div class="mb-3">
                         <input id="id" type="number" hidden th:field="*{id}">
@@ -37,6 +37,10 @@
                     <div class="mb-3">
                         <label for="mileage" class="col-form-label">Mileage :</label>
                         <input id="mileage" type="text" th:field="*{mileage}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="col-form-label">Image :</label>
+                        <input id="image" type="file" name="file" class="form-control" accept="image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label for="status" class="col-form-label"> Status :</label>
