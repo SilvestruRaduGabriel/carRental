@@ -26,7 +26,7 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
                 .antMatchers("/customer/create").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/customer/edit/**").hasRole("ADMIN")
                 .antMatchers("/webjars/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin().permitAll().defaultSuccessUrl("/rentals/")
                 .and()

@@ -25,6 +25,7 @@ public class CarMapper implements Mapper<Car,CarForm> {
         carForm.setMileage(entity.getMileage());
         carForm.setStatus(entity.getStatus());
         carForm.setAmount(entity.getAmount());
+        carForm.setImage(entity.getImage());
         return carForm;
 
     }
@@ -46,6 +47,7 @@ public class CarMapper implements Mapper<Car,CarForm> {
         car.setMileage(dto.getMileage());
         car.setStatus(dto.getStatus());
         car.setAmount(dto.getAmount());
+        car.setImage(dto.getImage());
         return car;
     }
 }
