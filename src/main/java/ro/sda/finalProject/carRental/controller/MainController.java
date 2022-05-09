@@ -52,7 +52,9 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String indexPage() {
+    public String indexPage(Model model) {
+        List<Car> cars = carService.findTop3();
+        model.addAttribute("carList", cars);
         return "index";
     }
 

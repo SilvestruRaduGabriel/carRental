@@ -28,4 +28,8 @@ public class CarForm {
 
     private String image;
 
+    public String getCarCompleteName(){
+        return brand + " " + model;
+    }
+
 }
