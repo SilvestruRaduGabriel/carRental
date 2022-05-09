@@ -22,13 +22,14 @@
         },
         axisY: {
           title: "Price (in EUR)",
-          prefix: "?"
+          prefix: "EUR"
         },
         data: [{
-          type: "candlestick",
+          // type: "candlestick",
+          type: "rangeColumn",
           xValueType: "dateTime",
           xValueFormatString: "MMM YYYY",
-          yValueFormatString: "Eur#,##0.00",
+          yValueFormatString: "Eur#,##0.00K",
           dataPoints: dataPoints
         }]
       });
