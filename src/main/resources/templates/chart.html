@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <script type="text/javascript">
+    window.onload = function() {
+
+      var dataPoints = [];
+      var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light2", // "light1", "dark1", "dark2"
+        animationEnabled: true,
+        exportEnabled: true,
+        zoomEnabled: true,
+        title: {
+          text: "Car Rental Sales"
+        },
+        subtitles: [{
+          text: "2016 - 2022"
+        }],
+        axisX: {
+          valueFormatString: "YYYY"
+        },
+        axisY: {
+          title: "Price (in EUR)",
+          prefix: "?"
+        },
+        data: [{
+          type: "candlestick",
+          xValueType: "dateTime",
+          xValueFormatString: "MMM YYYY",
+          yValueFormatString: "Eur#,##0.00",
+          dataPoints: dataPoints
+        }]
+      });
+
+      $.getJSON("/restfull-service/starbucks-corporation-stock-price.json", parseData);
+
+      function parseData(result) {
+        for (var i = 0; i < result.length; i++) {
+          dataPoints.push({
+            x: result[i].x + 137372911175,
+            y: result[i].y
+          });
+        }
+        chart.render();
+      }
+
+    }
+  </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
