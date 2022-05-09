@@ -217,8 +217,8 @@
             </section>
 
             <ul class="copyright">
-                <li>Copyright © 2020 Company Name</li>
-                <li>Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></li>
+                <li>Copyright © <span th:text="${#dates.format(#dates.createNow(),'YYYY')}"></span> Company Name</li>
+
             </ul>
         </div>
     </footer>

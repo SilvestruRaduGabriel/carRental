@@ -1,4 +1,4 @@
-package ro.sda.finalProject.carRental.controller;
+package ro.sda.finalProject.carRental.controller;// pCackage ro.sda.finalProject.carRental.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +18,10 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/")
-    public String showAllCustomers(Model model){
+    public String showAllCustomers(Model model) {
         List<Customer> customers = customerService.getAllCustomers();
-        model.addAttribute("customerList",customers);
-     return "customerList";
+        model.addAttribute("customerList", customers);
+        return "customerList";
     }
 
     @GetMapping("/create")
@@ -36,6 +36,7 @@ public class CustomerController {
         return "redirect:/customer/";
 
     }
+
     @GetMapping("/edit/{customerId}")
     public String showEditForm(@PathVariable("customerId") Integer id, Model model) {
         CustomerForm customerForm = customerService.findById(id);
