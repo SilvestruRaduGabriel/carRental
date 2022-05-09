@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
     <meta charset="utf-8"/>
@@ -139,48 +139,14 @@
 
             <!-- Fleet -->
             <section class="tiles">
-                <article class="style4">
+                <article class="style5" th:each="car : ${carList}">
 									<span class="image">
-										<img src="images/other-1-720x480.jpg" alt=""/>
+										<img src="${car}" th:src="*{'data:image/jpeg;base64, ' +car.image}"/>
 									</span>
                     <a href="fleet.html">
-                        <h2>Lorem ipsum dolor sit amet, consectetur</h2>
+                        <h2 th:text="${car.getCarCompleteName()}"></h2>
 
-                        <p>price from: <strong> $ 140.00</strong> per weekend</p>
-
-                        <p>
-                            <i class="fa fa-user"></i> 5 &nbsp;&nbsp;
-                            <i class="fa fa-briefcase"></i> 4 &nbsp;&nbsp;
-                            <i class="fa fa-sign-out"></i> 4 &nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> A
-                        </p>
-                    </a>
-                </article>
-                <article class="style5">
-									<span class="image">
-										<img src="images/other-2-720x480.jpg" alt=""/>
-									</span>
-                    <a href="fleet.html">
-                        <h2>Lorem ipsum dolor sit amet, consectetur</h2>
-
-                        <p>price from: <strong> $ 140.00</strong> per weekend</p>
-
-                        <p>
-                            <i class="fa fa-user"></i> 5 &nbsp;&nbsp;
-                            <i class="fa fa-briefcase"></i> 4 &nbsp;&nbsp;
-                            <i class="fa fa-sign-out"></i> 4 &nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> A
-                        </p>
-                    </a>
-                </article>
-                <article class="style6">
-									<span class="image">
-										<img src="images/other-3-720x480.jpg" alt=""/>
-									</span>
-                    <a href="fleet.html">
-                        <h2>Lorem ipsum dolor sit amet, consectetur</h2>
-
-                        <p>price from: <strong> $ 140.00</strong> per weekend</p>
+                        <p>Price from: <strong th:text="${car.amount}"></strong>$ per weekend</p>
 
                         <p>
                             <i class="fa fa-user"></i> 5 &nbsp;&nbsp;

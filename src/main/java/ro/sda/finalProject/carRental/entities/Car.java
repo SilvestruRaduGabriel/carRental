@@ -41,4 +41,8 @@ public class Car {
 
     @OneToMany(mappedBy = "car")
     private List<Reservation> reservations;
+
+    public String getCarCompleteName(){
+        return brand + " " + model;
+    }
 }
